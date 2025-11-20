@@ -158,102 +158,115 @@ const getColorClasses = (color: string, isActive: boolean) => {
 };
 
 export default function Structure() {
-    const [activeStep, setActiveStep] = useState(steps[0]);
-    const stepRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const [activeStepIndex, setActiveStepIndex] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = Number(entry.target.getAttribute('data-index'));
-                        setActiveStep(steps[index]);
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '-45% 0px -45% 0px',
-                threshold: 0
+        const handleScroll = () => {
+            if (!containerRef.current) return;
+
+            const { top, height } = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // Calculate progress through the section
+            // We want the sticky behavior to start when top hits 0
+            // And end when the bottom of the container hits the bottom of the viewport
+
+            const scrollDistance = height - windowHeight;
+            const scrolled = -top;
+
+            if (scrolled >= 0 && scrolled <= scrollDistance) {
+                const progress = scrolled / scrollDistance;
+                const stepIndex = Math.min(
+                    Math.floor(progress * steps.length),
+                    steps.length - 1
+                );
+                setActiveStepIndex(stepIndex);
+            } else if (scrolled < 0) {
+                setActiveStepIndex(0);
+            } else {
+                setActiveStepIndex(steps.length - 1);
             }
-        );
+        };
 
-        stepRefs.current.forEach((ref) => {
-            if (ref) observer.observe(ref);
-        });
-
-        return () => observer.disconnect();
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const activeStep = steps[activeStepIndex];
     const activeColors = getColorClasses(activeStep.color, true);
 
     return (
-        <section className="bg-black py-24 px-4">
-            <div className="mx-auto max-w-6xl">
-                <h2 className="mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                    The Structure
-                </h2>
-                <p className="mb-16 text-center text-zinc-400">
-                    Structured Hardwork beats talent
-                </p>
+        <section ref={containerRef} className="relative h-[300vh] bg-black">
+            <div className="sticky top-0 flex h-screen items-center overflow-hidden px-4">
+                <div className="mx-auto w-full max-w-6xl">
+                    <h2 className="mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                        The Structure
+                    </h2>
+                    <p className="mb-16 text-center text-zinc-400">
+                        Structured Hardwork beats talent
+                    </p>
 
-                <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
-                    {/* Left Column: List of Steps */}
-                    <div className="flex flex-col gap-32 lg:w-1/3 lg:gap-2">
-                        {steps.map((step, index) => {
-                            const isActive = activeStep.id === step.id;
-                            const colors = getColorClasses(step.color, isActive);
+                    <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+                        {/* Left Column: List of Steps */}
+                        <div className="flex flex-col gap-2 lg:w-1/3">
+                            {steps.map((step, index) => {
+                                const isActive = index === activeStepIndex;
+                                const colors = getColorClasses(step.color, isActive);
 
-                            return (
-                                <button
-                                    key={step.id}
-                                    ref={(el) => { stepRefs.current[index] = el; }}
-                                    data-index={index}
-                                    onMouseEnter={() => setActiveStep(step)}
-                                    onClick={() => setActiveStep(step)}
-                                    className={`group flex items-center gap-4 rounded-xl border p-4 text-left transition-all duration-300 ${isActive
+                                return (
+                                    <button
+                                        key={step.id}
+                                        onClick={() => {
+                                            // Optional: Scroll to the correct position for this step
+                                            // This would require complex math to reverse-engineer the scroll position
+                                            // For now, we keep it as a visual indicator or simple state switch if needed
+                                            // But in sticky scroll, scroll is the source of truth.
+                                        }}
+                                        className={`group flex items-center gap-4 rounded-xl border p-4 text-left transition-all duration-300 ${isActive
                                             ? `${colors.border} ${colors.bg}`
-                                            : 'border-zinc-800 bg-zinc-900/30 hover:border-zinc-700 hover:bg-zinc-900/50'
-                                        }`}
-                                >
-                                    <div className={`flex-shrink-0 transition-colors duration-300 ${isActive ? colors.text : 'text-zinc-500 group-hover:text-zinc-300'
-                                        }`}>
-                                        {step.icon}
+                                            : 'border-zinc-800 bg-zinc-900/30 opacity-50'
+                                            }`}
+                                    >
+                                        <div className={`flex-shrink-0 transition-colors duration-300 ${isActive ? colors.text : 'text-zinc-500'
+                                            }`}>
+                                            {step.icon}
+                                        </div>
+                                        <span className={`font-medium transition-colors duration-300 ${isActive ? 'text-white' : 'text-zinc-400'
+                                            }`}>
+                                            {step.title}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Right Column: Detail Card */}
+                        <div className="relative flex-1 lg:h-auto">
+                            <div className="h-full min-h-[300px] rounded-3xl border border-zinc-800 bg-zinc-900/50 p-8 backdrop-blur-sm transition-all lg:min-h-[500px] lg:p-12">
+                                <div className={`absolute inset-0 bg-gradient-to-br ${activeColors.gradient} via-transparent to-transparent transition-colors duration-500`} />
+
+                                <div className="relative z-10 flex h-full flex-col justify-center">
+                                    <div className={`mb-8 flex h-20 w-20 items-center justify-center rounded-2xl ${activeColors.bg} ${activeColors.text} transition-all duration-500`}>
+                                        {React.cloneElement(activeStep.icon as React.ReactElement<any>, { className: "h-10 w-10" })}
                                     </div>
-                                    <span className={`font-medium transition-colors duration-300 ${isActive ? 'text-white' : 'text-zinc-400 group-hover:text-white'
-                                        }`}>
-                                        {step.title}
-                                    </span>
-                                </button>
-                            );
-                        })}
-                    </div>
 
-                    {/* Right Column: Detail Card */}
-                    <div className="relative flex-1 lg:h-auto">
-                        <div className="sticky top-24 h-full min-h-[300px] rounded-3xl border border-zinc-800 bg-zinc-900/50 p-8 backdrop-blur-sm transition-all lg:min-h-[500px] lg:p-12">
-                            <div className={`absolute inset-0 bg-gradient-to-br ${activeColors.gradient} via-transparent to-transparent transition-colors duration-500`} />
+                                    <h3 className="mb-4 text-3xl font-bold text-white">
+                                        {activeStep.title}
+                                    </h3>
 
-                            <div className="relative z-10 flex h-full flex-col justify-center">
-                                <div className={`mb-8 flex h-20 w-20 items-center justify-center rounded-2xl ${activeColors.bg} ${activeColors.text} transition-all duration-500`}>
-                                    {React.cloneElement(activeStep.icon as React.ReactElement, { className: "h-10 w-10" })}
-                                </div>
+                                    <p className="text-xl leading-relaxed text-zinc-400">
+                                        {activeStep.description}
+                                    </p>
 
-                                <h3 className="mb-4 text-3xl font-bold text-white">
-                                    {activeStep.title}
-                                </h3>
-
-                                <p className="text-xl leading-relaxed text-zinc-400">
-                                    {activeStep.description}
-                                </p>
-
-                                <div className={`mt-8 flex items-center gap-2 text-sm font-medium ${activeColors.text} transition-colors duration-500`}>
-                                    <span>Step {activeStep.id} of {steps.length}</span>
-                                    <div className="h-1 flex-1 overflow-hidden rounded-full bg-zinc-800">
-                                        <div
-                                            className={`h-full ${activeColors.bgSolid} transition-all duration-500`}
-                                            style={{ width: `${(activeStep.id / steps.length) * 100}%` }}
-                                        />
+                                    <div className={`mt-8 flex items-center gap-2 text-sm font-medium ${activeColors.text} transition-colors duration-500`}>
+                                        <span>Step {activeStep.id} of {steps.length}</span>
+                                        <div className="h-1 flex-1 overflow-hidden rounded-full bg-zinc-800">
+                                            <div
+                                                className={`h-full ${activeColors.bgSolid} transition-all duration-500`}
+                                                style={{ width: `${((activeStepIndex + 1) / steps.length) * 100}%` }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
