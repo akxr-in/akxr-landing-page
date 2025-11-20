@@ -13,8 +13,12 @@ export default function Home() {
       <Structure />
       <Pricing />
 
-      <footer className="border-t border-zinc-800 bg-black py-8 text-center text-sm text-zinc-500">
-        <p>&copy; {new Date().getFullYear()} akxr labs. All rights reserved.</p>
+      <footer className="border-t border-zinc-900 bg-black py-12 text-center">
+        <div className="flex flex-col items-center justify-center gap-4">
+          <p className="text-sm text-zinc-500">
+            &copy; {new Date().getFullYear()} akxr labs. All rights reserved.
+          </p>
+        </div>
       </footer>
     </main>
   );
