@@ -1,9 +1,6 @@
-import Background from './Background';
-
 export default function Hero() {
   return (
     <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden bg-black px-4 text-center">
-      <Background mode="calm" className="opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl">
@@ -11,7 +8,7 @@ export default function Hero() {
           akxr labs
         </h1>
         <p className="mb-10 text-xl font-mono text-zinc-400 sm:text-2xl animate-fade-in-up delay-100 tracking-wide">
-          Structured Hardwork beats talent
+          structured hardwork beats talent
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in-up delay-200">

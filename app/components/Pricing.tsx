@@ -1,13 +1,6 @@
-import Background from './Background';
-
 export default function Pricing() {
     return (
         <section className="relative overflow-hidden bg-black py-32 px-4">
-            {/* Background confined to this section */}
-            <div className="absolute inset-0 opacity-20">
-                <Background mode="urgent" />
-            </div>
-
             <div className="relative z-10 mx-auto max-w-3xl text-center">
                 <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 p-8 backdrop-blur-md sm:p-12">
                     {/* Tech grid background */}
@@ -36,9 +29,9 @@ export default function Pricing() {
                             <p className="text-lg text-zinc-400 max-w-lg mx-auto leading-relaxed">
                                 All this is for free for a limited time.
                                 <br />
-                                <span className="text-zinc-600 text-sm mt-2 block">
+                                {/* <span className="text-zinc-600 text-sm mt-2 block">
                                     From August 2026 it will be ₹1500 per month subscription.
-                                </span>
+                                </span> */}
                             </p>
                         </div>
 
