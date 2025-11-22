@@ -1,3 +1,5 @@
+'use client';
+
 export default function Pricing() {
     return (
         <section className="relative overflow-hidden bg-black py-32 px-4">
@@ -35,7 +37,9 @@ export default function Pricing() {
                             </p>
                         </div>
 
-                        <button className="group relative w-full overflow-hidden rounded-lg bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto sm:px-12">
+                        <button onClick={() => {
+            window.open('https://forms.gle/SZvZP9o4oFmGHjTg7', '_blank')
+          }} className="group relative w-full overflow-hidden rounded-lg bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto sm:px-12">
                             <span className="relative z-10 uppercase tracking-wider">Start Learning Now</span>
                             <div className="absolute inset-0 -translate-x-full bg-zinc-300 transition-transform duration-500 group-hover:translate-x-0" />
                         </button>
