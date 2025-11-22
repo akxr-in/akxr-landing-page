@@ -120,8 +120,8 @@ export default function Structure() {
     const activeStep = steps[activeStepIndex];
 
     return (
-        <section ref={containerRef} className="relative h-[300vh] bg-black">
-            <div className="sticky top-0 flex h-screen items-center overflow-hidden px-4">
+        <section ref={containerRef} className="bg-black">
+            <div className="flex items-center overflow-hidden px-4">
                 <div className="mx-auto w-full max-w-6xl">
                     <h2 className="mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         The Structure
