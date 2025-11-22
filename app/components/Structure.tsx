@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 const steps = [
     {
@@ -87,41 +87,12 @@ const steps = [
 
 export default function Structure() {
     const [activeStepIndex, setActiveStepIndex] = useState(0);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!containerRef.current) return;
-
-            const { top, height } = containerRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            const scrollDistance = height - windowHeight;
-            const scrolled = -top;
-
-            if (scrolled >= 0 && scrolled <= scrollDistance) {
-                const progress = scrolled / scrollDistance;
-                const stepIndex = Math.min(
-                    Math.floor(progress * steps.length),
-                    steps.length - 1
-                );
-                setActiveStepIndex(stepIndex);
-            } else if (scrolled < 0) {
-                setActiveStepIndex(0);
-            } else {
-                setActiveStepIndex(steps.length - 1);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const activeStep = steps[activeStepIndex];
 
     return (
-        <section ref={containerRef} className="bg-black">
-            <div className="flex items-center overflow-hidden px-4">
+        <section className="bg-black py-32 px-4">
+            <div className="flex items-center overflow-hidden">
                 <div className="mx-auto w-full max-w-6xl">
                     <h2 className="mb-4 text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         The Structure
@@ -139,10 +110,8 @@ export default function Structure() {
                                 return (
                                     <button
                                         key={step.id}
-                                        onClick={() => {
-                                            // Scroll logic could go here
-                                        }}
-                                        className={`group flex items-center gap-4 rounded-lg border p-4 text-left transition-all duration-300 ${isActive
+                                        onClick={() => setActiveStepIndex(index)}
+                                        className={`group flex items-center gap-4 rounded-lg border p-4 text-left transition-all duration-300 cursor-pointer ${isActive
                                             ? 'border-white/20 bg-zinc-900'
                                             : 'border-transparent hover:bg-zinc-900/50 opacity-40 hover:opacity-70'
                                             }`}
