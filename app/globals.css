@@ -1,3 +1,11 @@
+@keyframes move-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(8px); }
+}
+
+.animate-move-right {
+  animation: move-right 1s infinite alternate;
+}
 @import "tailwindcss";
 
 :root {
