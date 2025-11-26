@@ -10,7 +10,7 @@ const HiringBanner = () => {
   }
 
   return (
-    <div className="w-full border-b border-zinc-900 bg-black py-3 overflow-hidden relative">
+    <div className="w-full border-y border-zinc-900 bg-black py-3 overflow-hidden relative">
       <a 
         href="/careers" 
         className="block hover:opacity-80 transition-opacity"
