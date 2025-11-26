@@ -138,7 +138,9 @@ export default function Structure() {
 
                                 <div className="relative z-10 flex h-full flex-col justify-center">
                                     <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/50 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        {React.cloneElement(activeStep.icon as React.ReactElement<any>, { className: "h-8 w-8" })}
+                                        {React.cloneElement(activeStep.icon as React.ReactElement<{
+                                            className?: string;
+                                        }>, { className: "h-8 w-8" })}
                                     </div>
 
                                     <h3 className="mb-6 text-4xl font-bold text-white tracking-tight">

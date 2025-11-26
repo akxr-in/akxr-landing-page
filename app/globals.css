@@ -1,3 +1,25 @@
+@keyframes move-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(8px); }
+}
+
+.animate-move-right {
+  animation: move-right 1s infinite alternate;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
 @import "tailwindcss";
 
 :root {

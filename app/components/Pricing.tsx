@@ -1,13 +1,15 @@
 'use client';
 
+import Button from './Button';
+
 export default function Pricing() {
     return (
         <section className="relative overflow-hidden bg-black py-32 px-4">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
                 <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 p-8 backdrop-blur-md sm:p-12">
                     {/* Tech grid background */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/50 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+                    <div className="absolute inset-0 bg-linear-to-br from-zinc-900/50 via-transparent to-transparent" />
 
                     <div className="relative z-10">
                         <h2 className="mb-8 text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -37,12 +39,13 @@ export default function Pricing() {
                             </p>
                         </div>
 
-                        <button onClick={() => {
-            window.open('https://forms.gle/SZvZP9o4oFmGHjTg7', '_blank')
-          }} className="group relative w-full overflow-hidden rounded-lg bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200 sm:w-auto sm:px-12">
-                            <span className="relative z-10 uppercase tracking-wider">Start Learning Now</span>
-                            <div className="absolute inset-0 -translate-x-full bg-zinc-300 transition-transform duration-500 group-hover:translate-x-0" />
-                        </button>
+                        <Button 
+                            href="https://forms.gle/SZvZP9o4oFmGHjTg7" 
+                            target="_blank"
+                            className="sm:px-12 py-4"
+                        >
+                            Start Learning Now
+                        </Button>
                     </div>
                 </div>
             </div>
