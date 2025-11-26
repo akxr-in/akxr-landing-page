@@ -1,12 +1,9 @@
 'use client';
 
-import HiringBanner from "./HiringBanner";
-
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-4 text-center">
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black pointer-events-none" />
-      <HiringBanner/>
 
       <div className="relative z-10 max-w-4xl">
         <h1 className="mb-6 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-6xl font-bold tracking-tighter text-transparent sm:text-8xl animate-fade-in-up">
