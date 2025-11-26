@@ -4,7 +4,10 @@ import Button from './Button';
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-4 text-center">
+    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-black px-4 text-center">
+      {/* Tech grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+      <div className="absolute inset-0 bg-linear-to-br from-zinc-900/50 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl">
