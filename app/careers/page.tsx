@@ -1,53 +1,73 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Careers() {
-  const [expanded, setExpanded] = useState(false);
 
   return (
-    <main className="min-h-screen bg-black text-zinc-100 flex flex-col items-center justify-start py-12 px-4">
-      <div className="w-full mb-8 flex justify-center ">
-        <div className="w-3xl bg-transparent border border-zinc-700 text-zinc-100 rounded-lg px-6 py-4 text-center">
-          <h2 className="text-2xl font-bold">We&apos;re Hiring!</h2>
-          <p className="mt-2 text-sm opacity-80">
-            Join AKXR as a UI/UX Design Intern
-          </p>
-        </div>
-      </div>
-      {/* Job Card (dark) with collapsible content */}
-      <div className="max-w-3xl w-full bg-black/60 backdrop-blur-sm border border-zinc-700 rounded-lg shadow-lg p-0 overflow-hidden">
-        <div className="flex items-center justify-between p-6">
-          <h1 className="text-2xl font-bold mb-0 bg-linear-to-b from-white to-zinc-400 bg-clip-text text-transparent">
-            UI/UX Design - Internship
+    <main className="min-h-screen bg-black text-white py-32 px-4">
+      <div className="mx-auto max-w-4xl">
+        {/* Header Section */}
+        <div className="mb-12 text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/50 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">
+              We&apos;re Hiring
+            </span>
+          </div>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Join Our Team
           </h1>
-          <div className="flex items-center gap-3">
+          {/* <p className="text-lg text-zinc-400 font-light">
+            Help us build the future of engineering education
+          </p> */}
+        </div>
+
+        {/* Job Card */}
+        <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-lg">
+          {/* Tech grid background */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+          <div className="absolute inset-0 bg-linear-to-br from-zinc-900/50 via-transparent to-transparent" />
+
+          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-8 border-b border-zinc-800">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+                UI/UX Design Intern
+              </h2>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-400 font-mono">
+                <span className="flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  3 months
+                </span>
+                <span>•</span>
+                <span className="flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                  Remote
+                </span>
+              </div>
+            </div>
             <Link
               href="https://forms.gle/SvfVa63ECQKp9mtX6"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="group cursor-pointer relative overflow-hidden rounded-full bg-white px-8 py-3 text-sm font-bold text-black transition-transform hover:scale-105 active:scale-95 uppercase tracking-wider">
+              <button className="group cursor-pointer relative overflow-hidden rounded-full bg-white px-6 sm:px-8 py-3 text-sm font-bold text-black transition-transform hover:scale-105 active:scale-95 uppercase tracking-wider whitespace-nowrap">
                 Apply Now
               </button>
             </Link>
           </div>
-        </div>
 
-        <div className="relative">
-          <div
-            className="overflow-hidden px-8"
-            style={{
-              maxHeight: expanded ? "2000px" : "260px",
-              transition: "max-height 320ms ease",
-            }}
-          >
-            <div className="pt-6 pb-8 border-t border-zinc-800">
-              <h2 className="font-semibold mb-2 text-zinc-200">
-                Selected intern&apos;s day-to-day responsibilities include:
-              </h2>
-              <ul className="list-disc ml-6 mb-4 marker:text-zinc-400 text-zinc-200">
+          <div className="relative">
+            <div className="px-8">
+              <div className="relative z-10 pt-8 pb-8">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wide">
+                Responsibilities
+              </h3>
+              <ul className="list-disc ml-6 mb-6 space-y-2 marker:text-zinc-500 text-zinc-400 leading-relaxed">
                 <li>
                   Logo and brand identity: You&apos;ll assist in designing the
                   AKXR logo, color palette, typography, and overall visual
@@ -75,50 +95,52 @@ export default function Careers() {
                 </li>
               </ul>
 
-              <p className="mb-4 text-zinc-200">
+              <p className="mb-8 text-zinc-400 leading-relaxed border-l-2 border-zinc-700 pl-4">
                 This role will give you hands-on experience in product design,
                 brand development, and systems thinking all within a fast-paced,
                 engineering-driven environment.
               </p>
 
-              <h3 className="font-semibold mb-2 text-zinc-200">
-                Skill(s) required
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wide">
+                Required Skills
               </h3>
-              <ul className="list-disc ml-6 mb-4 marker:text-zinc-400 text-zinc-200">
+              <ul className="list-disc ml-6 mb-8 space-y-2 marker:text-zinc-500 text-zinc-400">
                 <li>Figma</li>
                 <li>UI & UX Design</li>
                 <li>User Interface (UI) Development</li>
                 <li>Wireframing</li>
               </ul>
 
-              <h3 className="font-semibold mb-2 text-zinc-200">
-                Who can apply
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wide">
+                Who Can Apply
               </h3>
-              <ul className="list-disc ml-6 mb-4 marker:text-zinc-400 text-zinc-200">
-                <li>are available for the work from home job/internship</li>
-                <li>
-                  can start the work from home job/internship between 31st
+              <ul className="list-disc ml-6 mb-8 space-y-2 marker:text-zinc-500 text-zinc-400">
+                <li>are available for the work from home internship</li>
+                {/* <li>
+                  can start the work from home internship between 31st
                   Oct&apos;25 and 5th Dec&apos;25
-                </li>
+                </li> */}
                 <li>are available for duration of 3 months</li>
-                <li>have relevant skills and interests</li>
+                {/* <li>have relevant skills and interests</li> */}
               </ul>
 
-              <h3 className="font-semibold mb-2 text-zinc-200">Perks</h3>
-              <ul className="list-disc ml-6 mb-4 marker:text-zinc-400 text-zinc-200">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wide">Perks</h3>
+              <ul className="list-disc ml-6 mb-8 space-y-2 marker:text-zinc-500 text-zinc-400">
                 <li>Certificate</li>
                 <li>Letter of recommendation</li>
                 <li>Flexible work hours</li>
                 <li>5 days a week</li>
               </ul>
 
-              <h3 className="font-semibold mb-2 text-zinc-200">
-                Number of openings
-              </h3>
-              <p className="mb-4 text-zinc-200">1</p>
+              <div className="mb-8 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+                <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-wide">
+                  Number of Openings
+                </h3>
+                <p className="text-2xl font-bold text-white">1</p>
+              </div>
 
-              <h3 className="font-semibold mb-2 text-zinc-200">About AKXR</h3>
-              <p className="mb-4 text-zinc-200">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wide">About AKXR</h3>
+              <p className="text-zinc-400 leading-relaxed">
                 We at AKXR train college students to get placed. Over the past
                 three years, we have mentored more than 30 to 40 students,
                 igniting their passion for engineering and computer science.
@@ -129,33 +151,10 @@ export default function Careers() {
                 are building a company around it.
               </p>
 
-              <div className="flex justify-center mt-6">
-                <Link
-                  href="https://forms.gle/SvfVa63ECQKp9mtX6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="group  cursor-pointer relative inline-flex items-center justify-center rounded-full bg-white text-black font-bold py-2 px-6 shadow hover:scale-105 transition-transform">
-                    Apply Now
-                    <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-linear-to-r from-blue-400 to-purple-500" />
-                  </button>
-                </Link>
-              </div>
+             
             </div>
           </div>
-
-          {!expanded && (
-            <div className="pointer-events-none absolute left-8 right-8 bottom-0 h-20 bg-linear-to-t from-black/60 to-transparent" />
-          )}
-        </div>
-
-        <div className="flex justify-center p-6 border-t border-zinc-800">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="bg-zinc-800/60 text-white py-2 px-4 rounded-md hover:bg-zinc-700/60 transition"
-          >
-            {expanded ? "See Less" : "See More"}
-          </button>
+          </div>
         </div>
       </div>
     </main>
