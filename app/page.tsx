@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Hero from "./components/Hero";
+import HiringBanner from "./components/HiringBanner";
 import Pricing from "./components/Pricing";
 import Problems from "./components/Problems";
 import Structure from "./components/Structure";
@@ -16,6 +17,7 @@ export default function Home() {
       <footer className="border-t border-zinc-900 bg-black py-12">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col items-center justify-center gap-6">
+           <HiringBanner/>
             {/* Social Links */}
             <div className="flex items-center gap-6">
               <a

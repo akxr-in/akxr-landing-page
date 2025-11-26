@@ -1,20 +1,12 @@
 'use client';
 
-import { FaArrowRightLong } from "react-icons/fa6";
+import HiringBanner from "./HiringBanner";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-4 text-center">
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black pointer-events-none" />
-      <div className="relative z-20 w-full flex justify-center mb-4 animate-fade-in-up">
-        <a
-          href="/careers"
-          className="flex items-center gap-2 bg-black border border-zinc-700 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:scale-105 transition-transform"
-        >
-          🚀 We&apos;re hiring! Apply Now
-          <FaArrowRightLong className="ml-2 text-lg shrink-0 animate-move-right" />
-        </a>
-      </div>
+      <HiringBanner/>
 
       <div className="relative z-10 max-w-4xl">
         <h1 className="mb-6 bg-linear-to-b from-white to-zinc-500 bg-clip-text text-6xl font-bold tracking-tighter text-transparent sm:text-8xl animate-fade-in-up">
