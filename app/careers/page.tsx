@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import Button from "../components/Button";
+import Footer from "../components/Footer";
 
 export default function Careers() {
 
   return (
-    <main className="min-h-screen bg-black text-white py-32 px-4">
+    <>
+    <main className="min-h-screen bg-black text-white py-16 px-4">
       <div className="mx-auto max-w-4xl">
         {/* Header Section */}
         <div className="mb-12 text-center">
@@ -50,15 +52,14 @@ export default function Careers() {
                 </span>
               </div>
             </div>
-            <Link
+            <Button 
               href="https://forms.gle/SvfVa63ECQKp9mtX6"
               target="_blank"
               rel="noopener noreferrer"
+              className="cursor-pointer px-6 sm:px-8 whitespace-nowrap"
             >
-              <button className="group cursor-pointer relative overflow-hidden rounded-full bg-white px-6 sm:px-8 py-3 text-sm font-bold text-black transition-transform hover:scale-105 active:scale-95 uppercase tracking-wider whitespace-nowrap">
-                Apply Now
-              </button>
-            </Link>
+              Apply Now
+            </Button>
           </div>
 
           <div className="relative">
@@ -158,5 +159,7 @@ export default function Careers() {
         </div>
       </div>
     </main>
+    <Footer />
+    </>
   );
 }

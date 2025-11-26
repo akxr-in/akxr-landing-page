@@ -1,6 +1,14 @@
 'use client';
 
+import { usePathname } from "next/navigation";
+
 const HiringBanner = () => {
+  const pathname= usePathname()
+  
+  if (pathname?.includes('careers')) {
+    return null;
+  }
+
   return (
     <div className="w-full border-b border-zinc-900 bg-black py-3 overflow-hidden relative">
       <a 
