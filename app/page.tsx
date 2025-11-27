@@ -13,8 +13,8 @@ export default function Home() {
       <About />
       <Problems />
       <Structure />
-      <Pricing />
       <OpenSourceSection />
+      <Pricing />
       <Footer />
     </main>
   );
