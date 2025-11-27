@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Pricing from "./components/Pricing";
 import Problems from "./components/Problems";
 import Structure from "./components/Structure";
+import OpenSourceSection from "./components/OpenSourceSection";
 
 export default function Home() {
   return (
@@ -12,8 +13,9 @@ export default function Home() {
       <About />
       <Problems />
       <Structure />
+      <OpenSourceSection />
       <Pricing />
-      <Footer/>
+      <Footer />
     </main>
   );
 }
