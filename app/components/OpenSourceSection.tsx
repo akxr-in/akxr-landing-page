@@ -37,7 +37,7 @@ export default function OpenSourceSection() {
             <div className="absolute inset-0 pointer-events-none rounded-xl bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
             <Image
               src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/docmost.png"
-              alt="Outline"
+              alt="Docmost"
               width={30}
               height={30}
               className="relative z-10 mb-2"
