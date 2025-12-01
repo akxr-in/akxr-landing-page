@@ -1,14 +1,12 @@
 import { FaGithub, FaCheckCircle } from "react-icons/fa";
-import { SiOutline } from "react-icons/si";
 import Image from "next/image";
 
 export default function OpenSourceSection() {
   return (
     <section className="relative overflow-hidden bg-black py-24 px-4">
       <div className="relative z-10 mx-auto max-w-3xl text-center">
-   
         <h2 className="mb-8 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        Open Source, Always
+          Open Source, Always
         </h2>
         <p className="mb-10 text-lg leading-relaxed text-zinc-400 font-light">
           All AKXR products are{" "}
@@ -26,7 +24,6 @@ export default function OpenSourceSection() {
               width={50}
               height={50}
               className="relative z-10 mb-2"
-              style={{ filter: "drop-shadow(0 0 6px #24ADFF)" }}
             />
             <h3 className="relative z-10 font-semibold text-lg mb-2 text-white">
               Zulip
@@ -38,12 +35,18 @@ export default function OpenSourceSection() {
           </div>
           <div className="relative flex flex-col items-center bg-zinc-900/70 border border-zinc-700 rounded-xl p-6 transition-all  ">
             <div className="absolute inset-0 pointer-events-none rounded-xl bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
-            <SiOutline className="relative z-10 text-4xl mb-2 text-purple-400 transition-all  " />
+            <Image
+              src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/docmost.png"
+              alt="Docmost"
+              width={30}
+              height={30}
+              className="relative z-10 mb-2"
+            />
             <h3 className="relative z-10 font-semibold text-lg mb-2 text-white">
-              Outline
+              Docmost
             </h3>
             <p className="relative z-10 text-sm leading-relaxed text-zinc-500 font-mono">
-              We use <span className="font-semibold text-white">Outline</span>{" "}
+              We use <span className="font-semibold text-white">Docmost</span>{" "}
               for internal documentation and knowledge sharing.
             </p>
           </div>
