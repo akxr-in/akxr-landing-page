@@ -56,7 +56,7 @@ export default function OpenSourceSection() {
             <div className="absolute inset-0 pointer-events-none rounded-xl bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
             <FaGithub className="relative z-10 text-3xl mb-2 text-white transition-all hover:text-blue-400 " />
             <h3 className="relative z-10 font-semibold text-lg mb-2 text-white">
-              Open-Source Productshover
+                Open-Source Products
             </h3>
             <p className="relative z-10 text-sm leading-relaxed text-zinc-500 font-mono">
               Every AKXR product is released under an open-source license.
